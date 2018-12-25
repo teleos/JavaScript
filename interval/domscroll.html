@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>查看滚动条坐标及窗口大小</title>
+</head>
+<body>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+
+    <script type="text/javascript">
+
+        function Position(){
+            this.x = 0;
+            this.y = 0;
+        }
+        
+        /**
+            获取滚动条坐标
+        */
+        function getScrollPosition(){
+            var obj = new Position();
+            obj.x = window.pageXOffset || document.body.scrollLeft;
+            obj.y = window.pageYOffset || document.body.scrollTop;
+            return obj;
+
+        }
+        // setInterval( function(){console.log(getScrollPosition())} ,400);
+        setInterval( function(){console.log(getWindowSize())} ,400);
+
+
+        /**
+        * 查看窗口尺寸
+        */
+        function getWindowSize(){
+            var win = new Position();
+            win.x = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+            win.y = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+
+            return win;
+        }
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>dom 元素</title>
+
+    <style>
+        ul{
+
+            width: 300px;
+            
+
+        }
+
+        ul li{
+            width: 200px;
+            height: 200px;
+            background-color: blanchedalmond;
+        }
+        .box1{
+            position: absolute;
+            left: 200px;
+            top: 400px;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li class="box1">1</li>
+        <li class="box2">2</li>
+        <li class="box3">3</li>
+    </ul>
+
+
+    <script>
+    
+        // var box1 = document.getElementsByClassName('box1')[0];
+        // var rect = box1.getBoundingClientRect();
+        // for (const key in rect) {
+            
+        //         const element = rect[key];
+        //         console.log(key +' = '+ element)
+            
+        // }
+
+
+        function PositionReHTMl(){
+
+            this.x = 0;
+            this.y = 0;
+        }
+
+        function getPosition(elem){
+           
+            var left = elem.offsetLeft ;
+            var top = elem.offsetTop;
+            elem.pos.x += left;
+            elem.pos.y += top;
+
+            if(elem.offsetParent==document){
+                return elem.pos;
+            }
+            getPosition(elem.offsetParent)
+
+        }
+
+        var box1 = document.getElementsByClassName('box1')[0];
+        
+        box1.pos = new PositionReHTMl();
+
+        getPosition(box1);
+
+        
+    </script>
+</body>
+</html>
