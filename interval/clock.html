@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>interval & timeout</title>
+
+    <!--
+
+        计时器：到一分钟停止
+    -->
+    <style> 
+        div h3{
+            float: left;
+            border: 1px solid red;
+
+        }
+    </style>
+</head>
+<body>
+    
+    <div>
+
+        <h3 class="minute"></h3>
+        <h3 class="second"></h3>
+        <h3 class="millisecond"></h3>
+    </div>
+
+
+
+    <script type="text/javascript">
+
+        var minute = document.getElementsByClassName('minute')[0];
+        var second = document.getElementsByClassName('second')[0];
+        var millisecond = document.getElementsByClassName('millisecond')[0];
+      
+
+        var timer = setInterval(TimerHandler,16.67);
+        // minute.textContent
+        var m = 0, s = 0, ms = 0;
+        function TimerHandler(){
+
+            
+            if(ms == 60){
+                second.textContent = s++ ;
+                ms = 0 ;
+               
+            }
+            if(s == 60 ){
+                    minute.textContent = ++m ;
+                    s = 0;
+                    second.textContent = 0;
+                    clearInterval(timer);
+            }
+            millisecond.textContent = ms ++ ;
+        }
+
+    </script>
+</body>
+</html>
