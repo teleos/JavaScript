@@ -41,4 +41,17 @@
 
 - dom.offsetParent 
   - 返回最近的有定位的父级，如无，返回body,body.offsetParent 返回null
+- 脚本化css
+  - 读写元素css属性
+    - dom.style.prop
+      - `可读写行间样式`，没有兼容性问题，碰到float这样的关键字，前面应加css    eg: float-->cssFloat
+      - 复合属性必须拆解，组合单词变成小驼峰式写法
+      - 写入的值必须式字符串格式
+
+  - 查询计算样式
+    - window.getComputedStyle(ele,null)  ;
+    - 计算样式只读
+    - 返回的计算样式的值都是绝对值，没有相对单位
+    - IE8及IE8以下不兼容
+
 

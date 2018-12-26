@@ -10,7 +10,9 @@
         ul{
 
             width: 300px;
-            
+            position: relative;
+            left: 400px;
+            height: 200px;
 
         }
 
@@ -52,25 +54,26 @@
             this.y = 0;
         }
 
-        function getPosition(elem){
+        function getPosition(elem,pos){
            
             var left = elem.offsetLeft ;
             var top = elem.offsetTop;
-            elem.pos.x += left;
-            elem.pos.y += top;
+            pos.x += left;
+            pos.y += top;
 
-            if(elem.offsetParent==document){
-                return elem.pos;
+            if(elem.offsetParent!=document.body){
+                getPosition(elem.offsetParent,pos)
             }
-            getPosition(elem.offsetParent)
+            return pos;
 
         }
 
         var box1 = document.getElementsByClassName('box1')[0];
         
-        box1.pos = new PositionReHTMl();
-
-        getPosition(box1);
+        var ps = new PositionReHTMl();
+        var result;
+        result = getPosition(box1,ps) ;
+        console.log(result)
 
         
     </script>
