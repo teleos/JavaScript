@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>轮播图</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+
+        .clearfix:after{
+            content:',';
+            display: block;
+            clear: both;
+            visibility: hidden;
+            height: 0;
+            font-size: 0;
+        }
+
+        .wrapper{
+            position: relative;
+            width:397px;
+            height:235px;
+            border: 4px solid greenyellow;
+            margin: 0 auto;
+            /* overflow: hidden; */
+        }
+
+        .wrapper ul{
+            position: absolute;
+            left: -760px;
+            overflow: hidden;
+            width : 1550px;
+            height: 225px;
+            list-style: none;
+            backface-visibility: hidden;
+            border: 1px solid black;
+            opacity: 1;
+        }
+        .wrapper ul li{
+
+            float: left;
+            
+        }
+        ul li img{
+            width: 375px;
+            height: 225px;
+            content: 100%;
+            border:4px solid black;
+           
+        }
+     
+    </style>
+    
+
+</head>
+<body>
+
+
+<div class="body">
+
+    <div class="wrapper ">
+       
+            <ul class="clearfix">
+                    <li class=""><img src="img/taketurns_1.jpg" alt=""></li>
+                    <li class=""><img src="img/taketurns_2.jpg" alt=""></li>
+                    <li class=""><img visible='true'  src="img/taketurns_3.jpg" alt=""></li>
+                    <li class=""><img src="img/taketurns_4.jpg" alt=""></li>
+            </ul>
+
+    </div>
+
+
+</div>
+
+
+<script>
+
+    //轮播图
+
+    //1. 选取所有图片，放在一个数组中
+    var imgs = document.getElementsByTagName('img');
+    
+
+    //2. 调用一个定时器，  每隔500毫秒切换一张图片
+
+
+        //1.在这500毫秒中， 在定义一个定时器， 进行图片动画放映
+</script>
+
+
+</body>
+</html>
