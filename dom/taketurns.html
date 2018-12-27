@@ -132,7 +132,7 @@
                 var timer3 = setInterval(
                 
                 function hanlder(){
-                    var speed = 1,   
+                    var speed = 5,   
                     pos = 0;                 
                     var head = document.getElementsByClassName('head')[0];
                     for (let j = 0; j < lis.length ; j++) {
@@ -141,7 +141,7 @@
                         pos = element.offsetLeft - speed;
                         element.style.left = pos +'px';
 
-                        if(pos <= -400 ){
+                        if(pos == -400 ){
                             head.style.left = '1200px';
                             var index = parseInt(head.getAttribute('index') ) ;
                             head.className = '';
@@ -157,7 +157,7 @@
                     }
                     
                 }
-            ,1);
+            ,10);
 
             }
 
