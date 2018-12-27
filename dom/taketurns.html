@@ -22,37 +22,74 @@
 
         .wrapper{
             position: relative;
-            width:397px;
+            width:400px;
             height:235px;
-            border: 4px solid greenyellow;
+            /* border: 4px solid greenyellow; */
             margin: 0 auto;
-            /* overflow: hidden; */
+            overflow: hidden;
         }
 
         .wrapper ul{
             position: absolute;
-            left: -760px;
+            left: -400px;
             overflow: hidden;
-            width : 1550px;
+            width : 1600px;
             height: 225px;
             list-style: none;
             backface-visibility: hidden;
-            border: 1px solid black;
+            /* border: 1px solid black; */
             opacity: 1;
         }
         .wrapper ul li{
-
             float: left;
-            
+            position: absolute;
+            width:400px;
+
         }
+
+       li[index='0']{
+           left: 0;
+       }
+       li[index='1']{
+           left: 400px;
+       }
+       li[index='2']{
+           left: 800px;
+       }
+       li[index='3']{
+           left: 1200px;
+       }
+       
         ul li img{
-            width: 375px;
+            width: 392px;
             height: 225px;
             content: 100%;
-            border:4px solid black;
-           
+            border:4px solid blueviolet;
+            /* margin: 0 auto; */
         }
-     
+        
+
+        ol{
+            border: 4px solid red;
+            width: 400px;
+            margin: 0 auto;
+            list-style: none;
+            
+        }
+        ol li{
+            float: left;
+            height: 40px;
+            width:40px;
+            border:4px solid blueviolet;
+            margin:  0 20px;
+            text-align: center;
+            line-height: 40px;
+            border-radius: 50%;
+            color: #fff;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            background-color: brown;
+            font-size: 24px;
+        }
     </style>
     
 
@@ -65,30 +102,81 @@
     <div class="wrapper ">
        
             <ul class="clearfix">
-                    <li class=""><img src="img/taketurns_1.jpg" alt=""></li>
-                    <li class=""><img src="img/taketurns_2.jpg" alt=""></li>
-                    <li class=""><img visible='true'  src="img/taketurns_3.jpg" alt=""></li>
-                    <li class=""><img src="img/taketurns_4.jpg" alt=""></li>
+                    <li index='0' class="head"><img src="img/taketurns_1.jpg" alt=""></li>
+                    <li index='1' class=""><img src="img/taketurns_2.jpg" alt=""></li>
+                    <li index='2' class=""><img src="img/taketurns_3.jpg" alt=""></li>
+                    <li index='3' class=""><img src="img/taketurns_4.jpg" alt=""></li>
             </ul>
 
+           
     </div>
-
-
+    <ol class='clearfix'>
+        <li class="click1">1</li>
+        <li class="click2">2</li>
+        <li class="click3">3</li>
+        <li class="click4">4</li>
+    </ol>
 </div>
 
 
 <script>
 
+
     //轮播图
 
     //1. 选取所有图片，放在一个数组中
-    var imgs = document.getElementsByTagName('img');
-    
+    var lis = document.getElementsByTagName('li');
 
-    //2. 调用一个定时器，  每隔500毫秒切换一张图片
+            var takeTurns = function (){
+
+                var timer3 = setInterval(
+                
+                function hanlder(){
+                    var speed = 1,   
+                    pos = 0;                 
+                    var head = document.getElementsByClassName('head')[0];
+                    for (let j = 0; j < lis.length ; j++) {
+
+                        const element = lis[j];
+                        pos = element.offsetLeft - speed;
+                        element.style.left = pos +'px';
+
+                        if(pos <= -400 ){
+                            head.style.left = '1200px';
+                            var index = parseInt(head.getAttribute('index') ) ;
+                            head.className = '';
+                            if(index < 3){
+                                lis[index+1].className = 'head';
+                            }else{
+                                lis[0].className = 'head';
+                            }
+                            clearInterval(timer3);
+                            break;
+                    
+                        }
+                    }
+                    
+                }
+            ,1);
+
+            }
+
+            setInterval(
+                function(){
+
+                    takeTurns();
+
+                    
+                },3000
+            )
+  
 
 
-        //1.在这500毫秒中， 在定义一个定时器， 进行图片动画放映
+
+
+
+   
+
 </script>
 
 
