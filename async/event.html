@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>事件</title>
+</head>
+<body>
+    <button id="btn" >点我</button>
+    <p id="para">Hello</p>
+    <script>
+    
+        function hello(){
+            console.log('hello,world');
+        }
+        var button = document.getElementById('btn');
+        // button.addEventListener('click',hello,false);
+        var he = {
+            handleEvent : function(event){
+                console.log('click');
+            }
+        };
+           /*
+        capture：布尔值，表示该事件是否在捕获阶段触发监听函数。
+once：布尔值，表示监听函数是否只触发一次，然后就自动移除。
+passive：布尔值，表示监听函数不会调用事件的preventDefault方法。如果监听函数调用了，浏览器将忽略这个要求，并在监控台输出一行警告。
+        */
+        var cop = {capture:false,once:true,passive:false}
+
+
+        button.addEventListener('click',he,cop);
+
+        button.removeEventListener('click',he,cop);
+
+        var param = document.getElementById('para');
+        // para.addEventListener('click',function(e){
+        //     console.log(this.nodeName);
+        // },false);
+
+        param.addEventListener('click',hello,false);
+        var event = new Event('click');
+        var iscanceled = para.dispatchEvent(event);
+        if(iscanceled){
+            console.log('事件未取消');
+        }else{
+            console.log('事件已取消');
+        }
+    </script>
+</body>
+</html>
