@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>事件模型</title>
+</head>
+<body>
+    <div>
+        <p>点击</p>
+    </div>
+    
+
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+    </ul>
+
+
+    <script>
+        var p = document.querySelector('p');
+        var div = document.querySelector('div');
+
+        var phases = {
+            1 : 'capture',
+            2 : 'target' ,
+            3 : 'bubble'
+        };
+        div.addEventListener('click',callback,true);
+        p.addEventListener('click',callback,true);
+        div.addEventListener('click', callback, false);
+        p.addEventListener('click', callback, false);
+
+        function callback(event){
+            var tag = event.currentTarget.tagName;
+            var phase = phases[event.eventPhase];
+            console.log("Tag : '"+ tag +". EventPhase: "+ phase +"'");
+        }
+    
+        var ul = document.querySelector('ul');
+        ul.addEventListener('click',function(event){
+            if(event.target.tagName.toLowerCase() === 'li'){
+                console.log(event.target.innerHTML)
+            }
+        })
+
+
+        //阻止事件的传播
+        p.addEventListener('click',function(e){
+            e.stopPropagation();
+        },true);
+
+        p.addEventListener('click' ,function(e){
+            e.stopPropagation();
+        },false);
+
+        p.addEventListener('click',function(event){
+            event.stopImmediatePropagation();
+            console.log(1);
+        })
+        p.addEventListener('click',function(event){
+            console.log(2);
+        })
+    </script>
+</body>
+</html>

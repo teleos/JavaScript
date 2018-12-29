@@ -93,4 +93,25 @@ JS运行时，除了一个正在运行的主线程，引擎还提供一个任务
     - IE独有的属性
 
 
+## 事件模型
+
+### 事件的传播
+一个事件发生后，会在子元素和父元素之间传播（propagation）。这种传播分为三个阶段。
+  - **第一阶段** ：从`window`对象传导到目标节点（上层传到底层），称为“捕获阶段”（capture phase）。
+  - **第二阶段** ： 在目标节点上触发，称为“目标阶段” （target phase）.
+  - **第三阶段** ： 从目标节点传导会`window`对象（底层传回上层），称为“冒泡阶段”（bubbling phase）
+
+### 事件的代理
+由于事件会在冒泡阶段向上传播到父节点，因此可以把子节点的监听函数定义在父节点上，由父节点的监听函数统一处理多个子元素的事件。这种方法叫做事件的代理。
+
+如果希望事件到某个节点为止，不再传播，可以使用事件对象的`stopPropagation`方法。
+
+如果想要彻底取消该事件，不再触发后面所有click的监听函数，可以使用`stopImmediatePropagation`方法。
+
+## Event对象
+
+1. 概述
+2. 实例属性
+   1. Event.bubbles, Event.eventPhase
+   2. Event.cancelable,Event.cancelBubble,event.defaultPrevented
 
